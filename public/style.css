@@ -90,6 +90,27 @@ body {
   overflow: hidden;
 }
 
+/* CHAT HEADER */
+.chat-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+#clear-chat {
+  padding: 6px 12px;
+  background: #4f8cff;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#clear-chat:hover {
+  background: #3a6fcc;
+}
+
 /* CHAT WINDOW */
 .chat-window {
   flex: 1;
@@ -109,6 +130,7 @@ body {
   opacity: 0;
   transform: translateY(5px);
   animation-fill-mode: forwards;
+  position: relative;
 }
 
 .message.ai {
@@ -123,6 +145,26 @@ body {
   color: #fff;
   align-self: flex-end;
   box-shadow: 0 0 10px #4f8cff70;
+}
+
+/* COPY BUTTON */
+.copy-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #4f8cff;
+  border: none;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.copy-btn:hover {
+  opacity: 1;
 }
 
 /* TYPING INDICATOR */
