@@ -34,11 +34,7 @@ chatForm.addEventListener('submit', async function(e){
   userInput.value = '';
 
   // Typing indicator
-  const typingDiv = document.createElement('div');
-  typingDiv.classList.add('message', 'ai');
-  typingDiv.textContent = "AssistVisionAi is analyzing...";
-  chat.appendChild(typingDiv);
-  chat.scrollTop = chat.scrollHeight;
+  const typingDiv = addMessage("AssistVisionAi is analyzing...", 'ai', true);
 
   try {
     const res = await fetch(`https://urangkapolka.vercel.app/api/chatgpt4?prompt=${encodeURIComponent(msg)}`);
@@ -46,18 +42,21 @@ chatForm.addEventListener('submit', async function(e){
 
     // Replace typing with actual response
     typingDiv.textContent = data.response || "Sorry, no response.";
+    addCopyButton(typingDiv);
+
   } catch (err) {
     typingDiv.textContent = "Error: Could not fetch AI response.";
     console.error(err);
   }
-
   chat.scrollTop = chat.scrollHeight;
 });
 
-function addMessage(text, type){
+function addMessage(text, type, isTyping=false){
   const div = document.createElement('div');
   div.classList.add('message', type);
+  if(isTyping) div.classList.add('typing');
   div.textContent = text;
   chat.appendChild(div);
   chat.scrollTop = chat.scrollHeight;
+  return div;
 }
