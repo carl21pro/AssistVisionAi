@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AssistVisionAi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="https://i.imgur.com/4AiXzf8.png" alt="AI Avatar" class="avatar">
+        <h2>AssistVisionAi</h2>
+        <p class="owner">Owner: Jerobie laug laug</p>
+      </div>
+      <div class="system-info">
+        <p id="time">Time: --:--</p>
+        <p id="date">Date: --</p>
+        <p id="battery">Battery: --%</p>
+      </div>
+      <div class="social">
+        <a href="https://www.facebook.com/profile.php?id=61560890733272" target="_blank">Facebook</a>
+      </div>
+    </aside>
 
+    <main class="chat-area">
+      <div id="chat" class="chat-window">
+        <div class="message ai">Hello! I am AssistVisionAi. How can I help you today?</div>
+      </div>
+      <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
+        <button type="submit">Send</button>
+      </form>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
