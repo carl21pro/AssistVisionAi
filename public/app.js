@@ -25,7 +25,7 @@ const chat = document.getElementById('chat');
 const chatForm = document.getElementById('chat-form');
 const userInput = document.getElementById('user-input');
 
-chatForm.addEventListener('submit', function(e){
+chatForm.addEventListener('submit', async function(e){
   e.preventDefault();
   const msg = userInput.value.trim();
   if(!msg) return;
@@ -33,11 +33,25 @@ chatForm.addEventListener('submit', function(e){
   addMessage(msg, 'user');
   userInput.value = '';
 
-  // Dummy AI Response for Phase 1
-  setTimeout(() => {
-    addMessage("This is a placeholder AI response. GPT-4 integration will come later.", 'ai');
-    chat.scrollTop = chat.scrollHeight;
-  }, 800);
+  // Typing indicator
+  const typingDiv = document.createElement('div');
+  typingDiv.classList.add('message', 'ai');
+  typingDiv.textContent = "AssistVisionAi is analyzing...";
+  chat.appendChild(typingDiv);
+  chat.scrollTop = chat.scrollHeight;
+
+  try {
+    const res = await fetch(`https://urangkapolka.vercel.app/api/chatgpt4?prompt=${encodeURIComponent(msg)}`);
+    const data = await res.json();
+
+    // Replace typing with actual response
+    typingDiv.textContent = data.response || "Sorry, no response.";
+  } catch (err) {
+    typingDiv.textContent = "Error: Could not fetch AI response.";
+    console.error(err);
+  }
+
+  chat.scrollTop = chat.scrollHeight;
 });
 
 function addMessage(text, type){
