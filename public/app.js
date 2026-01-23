@@ -4,7 +4,7 @@ const messages = document.getElementById("messages");
 const input = document.getElementById("input");
 const send = document.getElementById("send");
 
-/* 🧠 MEMORY (session-based like ChatGPT) */
+/* 🧠 MEMORY */
 const memory = [];
 const MAX_MEMORY = 10;
 
@@ -15,12 +15,11 @@ send.onclick = async () => {
   memory.push({ role: "user", content: input.value });
   trimMemory();
 
-  const prompt = buildPrompt();
+  const typing = showTyping(messages);
   input.value = "";
 
-  const typing = showTyping(messages);
-
   try {
+    const prompt = buildPrompt();
     const res = await fetch(
       "https://urangkapolka.vercel.app/api/chatgpt4?prompt=" +
       encodeURIComponent(prompt)
@@ -42,9 +41,9 @@ send.onclick = async () => {
 };
 
 function buildPrompt() {
-  return memory
-    .map(m => `${m.role === "user" ? "User" : "Assistant"}: ${m.content}`)
-    .join("\n");
+  return memory.map(m =>
+    `${m.role === "user" ? "User" : "Assistant"}: ${m.content}`
+  ).join("\n");
 }
 
 function trimMemory() {
@@ -63,7 +62,7 @@ function addMsg(text, cls) {
 }
 
 function formatAI(text) {
-  return `<b>Understood.</b><br><br>${text.replace(/\n/g, "<br>")}`;
+  return `<b>Understood.</b><br><br>${text.replace(/\n/g,"<br>")}`;
 }
 
 /* ⏰ PH TIME */
@@ -78,21 +77,9 @@ updateTime();
 navigator.getBattery().then(b => {
   const update = () => {
     document.getElementById("battery").innerText =
-      `🔋 Battery: ${Math.round(b.level * 100)}%` +
-      (b.charging ? " ⚡ Charging" : "");
+      `🔋 ${Math.round(b.level * 100)}%` + (b.charging ? " ⚡" : "");
   };
   update();
   b.onlevelchange = update;
   b.onchargingchange = update;
 });
-
-/* 🎵 MUSIC */
-const btn = document.getElementById("musicBtn");
-const frame = document.getElementById("musicFrame");
-let playing = false;
-
-btn.onclick = () => {
-  playing = !playing;
-  frame.style.display = playing ? "block" : "none";
-  btn.innerText = playing ? "⏸ Pause Music" : "▶ Enable Background Music";
-};
