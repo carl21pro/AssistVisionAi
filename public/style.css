@@ -1,7 +1,6 @@
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin:0; padding:0; }
 
 body {
-  margin: 0;
   font-family: Inter, sans-serif;
   background: radial-gradient(circle at top, #0f2027, #000);
   color: #eaeaea;
@@ -10,7 +9,7 @@ body {
   height: 100vh;
 }
 
-/* TOP BAR */
+/* TOPBAR */
 .topbar {
   padding: 12px;
   border-bottom: 1px solid rgba(0,255,255,.25);
@@ -35,6 +34,48 @@ body {
   display: flex;
   justify-content: center;
   gap: 12px;
+}
+
+/* SIDEBAR CARD */
+.sidebar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(0,255,255,.2);
+  background: rgba(0,0,0,.4);
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid cyan;
+  box-shadow: 0 0 12px cyan;
+}
+
+.owner-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.owner-name {
+  font-weight: 600;
+  border: 1px solid cyan;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,255,255,.4);
+}
+
+.fb-link {
+  font-size: 12px;
+  color: #60a5fa;
+  text-decoration: none;
+  border: 1px solid #60a5fa;
+  padding: 4px 8px;
+  border-radius: 6px;
+  width: fit-content;
 }
 
 /* CHAT */
@@ -113,4 +154,32 @@ button {
   opacity: .6;
   padding: 6px;
   border-top: 1px solid rgba(255,255,255,.1);
+}
+
+/* MOBILE STACK */
+@media (max-width: 600px) {
+  .sidebar {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .owner-name {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .fb-link {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .msg {
+    max-width: 90%;
+    font-size: 14px;
+  }
 }
