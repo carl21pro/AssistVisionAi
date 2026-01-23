@@ -1,18 +1,35 @@
-// ---------- COPY BUTTON ----------
-function addCopyButton(messageDiv) {
-  const btn = document.createElement('button');
-  btn.textContent = 'Copy';
-  btn.classList.add('copy-btn');
-  btn.addEventListener('click', () => {
-    navigator.clipboard.writeText(messageDiv.textContent)
-      .then(()=> alert('Copied to clipboard!'))
-      .catch(()=> alert('Failed to copy'));
-  });
-  messageDiv.appendChild(btn);
+
+export function showTyping(container) {
+  const el = document.createElement("div");
+  el.className = "msg bot typing";
+  el.innerHTML = "AssistVisionAi is analyzing<span class='dots'>.</span>";
+  container.appendChild(el);
+
+  let dots = 1;
+  el._interval = setInterval(() => {
+    dots = (dots % 3) + 1;
+    el.querySelector(".dots").innerText = ".".repeat(dots);
+  }, 500);
+
+  container.scrollTop = container.scrollHeight;
+  return el;
 }
 
-// ---------- CLEAR CHAT ----------
-const clearBtn = document.getElementById('clear-chat');
-clearBtn.addEventListener('click', () => {
-  chat.innerHTML = '';
-});
+export function removeTyping(el) {
+  clearInterval(el._interval);
+  el.remove();
+}
+
+export function addCopyButton(msgEl) {
+  const btn = document.createElement("button");
+  btn.className = "copy-btn";
+  btn.innerText = "Copy";
+
+  btn.onclick = () => {
+    navigator.clipboard.writeText(msgEl.innerText);
+    btn.innerText = "Copied!";
+    setTimeout(() => btn.innerText = "Copy", 1200);
+  };
+
+  msgEl.appendChild(btn);
+}
