@@ -6,62 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="app">
-
-  <!-- SIDEBAR / TOPBAR -->
-  <aside class="sidebar">
-    <div class="avatar-box">
-      <img src="https://media.giphy.com/media/1gVUhlXhETaRRxzeHO/giphy.gif">
-      <span class="status-dot"></span>
+<!-- HEADER -->
+<header class="topbar">
+  <div class="title">
+    <div class="name">AssistVisionAi</div>
+    <div class="by">By Jerobie</div>
+    <div class="live">
+      <span id="time">🕒 --</span>
+      <span id="battery">🔋 --</span>
     </div>
+  </div>
+</header>
 
-    <div class="title-box">
-      <h1 class="ai-name">AssistVisionAi</h1>
-      <p class="ai-status">Online • Professional Mode</p>
-    </div>
+<!-- CHAT -->
+<main class="chat">
+  <div id="messages" class="messages"></div>
 
-    <div class="desktop-only">
-      <div class="system-card">
-        <h3>LIVE INFO</h3>
-        <p id="time">🕒 --</p>
-        <p id="battery">🔋 --</p>
-      </div>
+  <div class="input-box">
+    <input id="input" placeholder="Ask AssistVisionAi..." />
+    <button id="send">Send</button>
+  </div>
+</main>
 
-      <div class="owner-card">
-        <span class="owner-label">OWNER</span>
-        <h2>Jerobie Laug Laug</h2>
-        <p>Founder • Developer</p>
-        <a href="https://www.facebook.com/profile.php?id=61560890733272" target="_blank">
-          <img class="fb-icon" src="https://cdn-icons-png.flaticon.com/512/124/124010.png">
-        </a>
-      </div>
-
-      <button id="musicBtn">▶ Enable Background Music</button>
-      <iframe id="musicFrame"
-        src="https://open.spotify.com/embed/track/1GZnoLPpR9p2CwclsZnOXD"
-        allow="autoplay"
-        style="display:none">
-      </iframe>
-    </div>
-  </aside>
-
-  <!-- CHAT -->
-  <main class="chat">
-    <div id="messages" class="messages"></div>
-
-    <div class="input-box">
-      <input id="input" placeholder="Ask AssistVisionAi..." />
-      <button id="send">Send</button>
-    </div>
-  </main>
-
-</div>
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 All rights reserved — Jerobie
+</footer>
 
 <script type="module" src="app.js"></script>
 </body>
