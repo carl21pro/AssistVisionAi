@@ -1,4 +1,3 @@
-
 export function showTyping(container) {
   const el = document.createElement("div");
   el.className = "msg bot typing";
@@ -28,7 +27,7 @@ export function addCopyButton(msgEl) {
   btn.onclick = () => {
     navigator.clipboard.writeText(msgEl.innerText);
     btn.innerText = "Copied!";
-    setTimeout(() => btn.innerText = "Copy", 1200);
+    setTimeout(() => (btn.innerText = "Copy"), 1200);
   };
 
   msgEl.appendChild(btn);
