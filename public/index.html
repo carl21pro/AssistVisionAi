@@ -1,44 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>AssistVisionAi</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <div class="profile">
-        <img src="https://i.imgur.com/4AiXzf8.png" alt="AI Avatar" class="avatar">
-        <h2>AssistVisionAi</h2>
-        <p class="owner">Owner: Jerobie laug laug</p>
-      </div>
-      <div class="system-info">
-        <p id="time">Time: --:--</p>
-        <p id="date">Date: --</p>
-        <p id="battery">Battery: --%</p>
-      </div>
-      <div class="social">
-        <a href="https://www.facebook.com/profile.php?id=61560890733272" target="_blank">Facebook</a>
-      </div>
-    </aside>
 
-    <main class="chat-area">
-      <div class="chat-header">
-        <button id="clear-chat">Clear Chat</button>
-      </div>
-      <div id="chat" class="chat-window">
-        <div class="message ai">Hello! I am AssistVisionAi. How can I help you today?</div>
-      </div>
-      <form id="chat-form">
-        <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
-        <button type="submit">Send</button>
-      </form>
-    </main>
-  </div>
-  
-  <script src="app.js"></script>
-  <script src="ui.js"></script>
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="avatar-box">
+      <img src="https://media.giphy.com/media/1gVUhlXhETaRRxzeHO/giphy.gif">
+      <span class="status-dot"></span>
+    </div>
+
+    <h1 class="ai-name">AssistVisionAi</h1>
+    <p class="ai-status">Online • Active</p>
+
+    <div class="system-card">
+      <h3>SYSTEM</h3>
+      <p>🟢 API Connected</p>
+      <p>🧠 Mode: Professional</p>
+    </div>
+
+    <div class="system-card">
+      <h3>LIVE INFO</h3>
+      <p id="time">🕒 --</p>
+      <p id="battery">🔋 --</p>
+    </div>
+
+    <div class="owner-card">
+      <span class="owner-label">OWNER</span>
+      <h2>Jerobie Laug Laug</h2>
+      <p>Founder • Developer</p>
+
+      <a href="https://www.facebook.com/profile.php?id=61560890733272" target="_blank">
+        <img class="fb-icon"
+          src="https://cdn-icons-png.flaticon.com/512/124/124010.png">
+      </a>
+    </div>
+
+    <button id="musicBtn">▶ Enable Background Music</button>
+
+    <iframe id="musicFrame"
+      src="https://open.spotify.com/embed/track/1GZnoLPpR9p2CwclsZnOXD"
+      allow="autoplay"
+      style="display:none">
+    </iframe>
+
+  </aside>
+
+  <!-- CHAT -->
+  <main class="chat">
+    <div id="messages" class="messages"></div>
+
+    <div class="input-box">
+      <input id="input" placeholder="Ask AssistVisionAi..." />
+      <button id="send">Send</button>
+    </div>
+  </main>
+
+</div>
+
+<script type="module" src="app.js"></script>
 </body>
 </html>
